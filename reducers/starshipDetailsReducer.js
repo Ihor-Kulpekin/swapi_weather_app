@@ -9,7 +9,7 @@ import {
 const initialState = {
   loading: false,
   error: false,
-  starship: null
+  starship: undefined
 };
 
 export default {

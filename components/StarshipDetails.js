@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStarshipDetails } from '../actions/starshipDetailsActions';
+import Table from '../moleculs/Table';
 
 const StarshipDetails = ({ route }) => {
   const starshipDetails = useSelector((state) => state.starshipDetails);
@@ -19,7 +20,7 @@ const StarshipDetails = ({ route }) => {
       {starshipDetails.loading ? (
         <ActivityIndicator size="large" color="#477EFF" />
       ) : (
-        <Text>{JSON.stringify(starshipDetails.starship)}</Text>
+        <Table starship={starshipDetails.starship}/>
       )}
     </View>
   );
