@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import styled from 'styled-components/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStarships } from '../actions/starshipsActions';
@@ -10,6 +10,12 @@ const WrapperStashipsScreen = styled.View`
   flex: 1;
   padding: 20px;
 `;
+
+const DismissKeybord = ({children}) => (
+  <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+)
 
 const StarshipsScreen = () => {
   const [value, setValue] = useState('');
@@ -28,14 +34,16 @@ const StarshipsScreen = () => {
   useEffect(fetchStarships, [value]);
 
   return (
-    <WrapperStashipsScreen>
-      <Input handleChangeText={handleChangeText}/>
-      {loading ? (
-        <ActivityIndicator size="large" color="#477EFF" />
-      ) : (
-        <ListStarships {...starships} />
-      )}
-    </WrapperStashipsScreen>
+    <DismissKeybord>
+      <WrapperStashipsScreen>
+        <Input handleChangeText={handleChangeText}/>
+        {loading ? (
+          <ActivityIndicator size="large" color="#477EFF" />
+        ) : (
+          <ListStarships {...starships} />
+        )}
+      </WrapperStashipsScreen>
+    </DismissKeybord>
   );
 };
 

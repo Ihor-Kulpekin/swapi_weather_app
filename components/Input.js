@@ -1,14 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TextInput} from 'react-native';
 
-
-const Input = ({handleChangeText}) => {
-  return (
+const Input = ({handleChangeText}) => (
     <View style={styles.container}>
       <TextInput style={styles.input} placeholderTextColor="#477EFF" placeholder="Search..." onChangeText={handleChangeText}/>
     </View>
-  )
-}
+)
 
 const styles = StyleSheet.create({
   container: {
