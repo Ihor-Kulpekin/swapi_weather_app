@@ -8,7 +8,8 @@ import {
 
 const initialState = {
   loading: false,
-  error: false
+  error: false,
+  starship: null
 };
 
 export default {
@@ -20,12 +21,12 @@ export default {
         error: false
       }),
       [getStarshipDetailsSuccess]: (state, { payload }) => {
-        const { starshipId, starshipDetails } = payload;
+        const { starshipDetails } = payload;
         return {
           ...state,
           loading: false,
           error: false,
-          [starshipId]: starshipDetails
+          starship: starshipDetails
         };
       },
       [getStarshipDetailsFailure]: (state) => {

@@ -19,7 +19,7 @@ const StarshipDetails = ({ route }) => {
       {starshipDetails.loading ? (
         <ActivityIndicator size="large" color="#477EFF" />
       ) : (
-        <Text>{JSON.stringify(starshipDetails)}</Text>
+        <Text>{JSON.stringify(starshipDetails.starship)}</Text>
       )}
     </View>
   );

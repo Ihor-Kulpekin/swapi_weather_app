@@ -1,23 +1,25 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { DrawerActions, NavigationContainer } from '@react-navigation/native';
+import { DrawerActions, NavigationContainer, useNavigation } from '@react-navigation/native';
 import { useScreenOptions } from '../utils/useScreenOptions';
+import WeatherScreen from '../screens/WeatherScreen';
 
 const Stack = createStackNavigator();
 
-const withStack = ({ navigation, component, headerTittle, name }) => {
+const WeatherStack = () => {
+  const navigation = useNavigation();
   const toggleDrawer = () => {
-    navigation.dispatch(DrawerActions.toggleDrawer());
+      navigation.dispatch(DrawerActions.toggleDrawer())
   };
 
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator>
         <Stack.Screen
-          name={name}
-          component={component}
+          name="WeatherStack"
+          component={WeatherScreen}
           options={useScreenOptions({
-            headerTitle: headerTittle,
+            headerTitle: 'weather',
             toggleDrawer: toggleDrawer
           })}
         />
@@ -26,4 +28,4 @@ const withStack = ({ navigation, component, headerTittle, name }) => {
   );
 };
 
-export default withStack;
+export default WeatherStack;

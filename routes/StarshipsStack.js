@@ -1,13 +1,14 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { DrawerActions, NavigationContainer } from '@react-navigation/native';
+import { DrawerActions, NavigationContainer, useNavigation } from '@react-navigation/native';
 import { useScreenOptions } from '../utils/useScreenOptions';
 import StarshipsScreen from '../screens/StarshipsScreen';
 import StarshipDetails from '../components/StarshipDetails';
 
 const Stack = createStackNavigator();
 
-const StarshipsStack = ({ navigation }) => {
+const StarshipsStack = () => {
+  const navigation = useNavigation();
   const toggleDrawer = () => {
     navigation.dispatch(DrawerActions.toggleDrawer());
   };
