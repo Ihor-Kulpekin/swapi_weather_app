@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStarshipDetails } from '../actions/starshipDetailsActions';
@@ -15,9 +15,9 @@ const StarshipDetails = ({ route }) => {
     dispatch(getStarshipDetails(id));
   };
 
-  const fetchAdditionalData = (action, dataArray) => {
+  const fetchAdditionalData = useCallback((action, dataArray) => {
     dispatch(action(dataArray));
-  };
+  },[starshipDetails?.starship?.films]);
 
   const collapse = () => {
     setCollapsed(!collapsed);
