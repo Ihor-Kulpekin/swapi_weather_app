@@ -32,7 +32,12 @@
     "styled-components": "5.2.0",
     "webpack": "^5.11.0",
     "dotenv": "^8.2.0",
-    "react-native-paper": "^4.5.0"
+    "react-native-paper": "^4.5.0",
+    "react-native-tableview-simple": "^4.2.1",
+    "react-native-collapsible": "^1.5.3",
+    "react-devtools": "^4.10.1",
+    "redux-devtools-extension": "^2.13.8"
+
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

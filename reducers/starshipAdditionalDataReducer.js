@@ -20,20 +20,20 @@ export default {
         loading: true
       };
     },
-    [getFilmsForDetailsStarshipSuccess]:(state, {payload})=>{
+    [getFilmsForDetailsStarshipSuccess]: (state, { payload }) => {
       return {
         ...state,
         loading: false,
         error: false,
         data: payload
-      }
+      };
     },
-    [getFilmsForDetailsStarshipFailure]:(state)=>{
+    [getFilmsForDetailsStarshipFailure]: (state) => {
       return {
         ...state,
         loading: false,
         error: true
-      }
+      };
     }
   }, initialState)
 };

@@ -23,5 +23,5 @@ export const getDetailsStarship = async (starshipId) => {
 
 
 export const getFilmsForDetailsStarship = async (films) => {
-  return Promise.all(films.map(async (item) => await getData(item)));
+  return await Promise.all(films.map(async (item) => await getData(item)));
 };
