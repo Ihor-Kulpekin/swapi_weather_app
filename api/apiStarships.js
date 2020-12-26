@@ -18,5 +18,10 @@ export const changePage = async (value) => {
 };
 
 export const getDetailsStarship = async (starshipId) => {
-  return getData('https://swapi.dev/api/starships/' + starshipId);
+  return await getData('https://swapi.dev/api/starships/' + starshipId);
+};
+
+
+export const getFilmsForDetailsStarship = async (films) => {
+  return Promise.all(films.map(async (item) => await getData(item)));
 };
