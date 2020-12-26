@@ -7,6 +7,7 @@ import Table from '../moleculs/Table';
 const StarshipDetails = ({ route }) => {
   const [collapsed, setCollapsed] = useState(true);
   const starshipDetails = useSelector((state) => state.starshipDetails);
+  const loading = useSelector((state) => state.starshipAdditionalData.loading);
   const dispatch = useDispatch();
   const { id } = route.params;
 
@@ -16,17 +17,26 @@ const StarshipDetails = ({ route }) => {
 
   const fetchAdditionalData = (action, dataArray) => {
     dispatch(action(dataArray));
-    setCollapsed(!collapsed);
   };
+
+  const collapse = () => {
+    setCollapsed(!collapsed);
+  }
 
   useEffect(fetchDetails, []);
 
   return (
     <View>
       {starshipDetails.loading ? (
-        <ActivityIndicator size="large" color="#477EFF"/>
+        <ActivityIndicator size="large" color="#477EFF" />
       ) : (
-        <Table starship={starshipDetails?.starship} collapsed={collapsed} fetchAdditionalData={fetchAdditionalData} />
+        <Table
+          starship={starshipDetails?.starship}
+          loading={loading}
+          collapsed={collapsed}
+          collapse={collapse}
+          fetchAdditionalData={fetchAdditionalData}
+        />
       )}
     </View>
   );
